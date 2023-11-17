@@ -1,0 +1,52 @@
+<%= form_with(model: review) do |form| %>
+  <% if review.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner_id, style: "display: block" %>
+    <%= form.text_field :owner_id %>
+  </div>
+
+  <div>
+    <%= form.label :product_id, style: "display: block" %>
+    <%= form.number_field :product_id %>
+  </div>
+
+  <div>
+    <%= form.label :rating, style: "display: block" %>
+    <%= form.number_field :rating %>
+  </div>
+
+  <div>
+    <%= form.label :would_repurchase, style: "display: block" %>
+    <%= form.text_field :would_repurchase %>
+  </div>
+
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.label :visibility, style: "display: block" %>
+    <%= form.text_field :visibility %>
+  </div>
+
+  <div>
+    <%= form.label :published, style: "display: block" %>
+    <%= form.check_box :published %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
