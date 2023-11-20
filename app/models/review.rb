@@ -11,15 +11,17 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  owner_id         :bigint           not null
-#  product_id       :integer
+#  product_id       :bigint
 #
 # Indexes
 #
-#  index_reviews_on_owner_id  (owner_id)
+#  index_reviews_on_owner_id    (owner_id)
+#  index_reviews_on_product_id  (product_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (owner_id => users.id)
+#  fk_rails_...  (product_id => products.id)
 #
 class Review < ApplicationRecord
   belongs_to :owner, class_name: "User"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_20_184203) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_20_221843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_184203) do
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "owner_id", null: false
-    t.integer "product_id"
     t.integer "rating"
     t.string "would_repurchase"
     t.string "body"
@@ -41,7 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_184203) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
     t.index ["owner_id"], name: "index_reviews_on_owner_id"
+    t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,5 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_184203) do
 
   add_foreign_key "follow_requests", "users", column: "recipient_id"
   add_foreign_key "follow_requests", "users", column: "sender_id"
+  add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "owner_id"
 end
