@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follow_requests
   resources :products
   resources :reviews
   devise_for :users

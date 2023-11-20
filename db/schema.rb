@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_17_211501) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_20_184203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "follow_requests", force: :cascade do |t|
+    t.bigint "recipient_id", null: false
+    t.bigint "sender_id", null: false
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_follow_requests_on_recipient_id"
+    t.index ["sender_id"], name: "index_follow_requests_on_sender_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
@@ -50,5 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_211501) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "follow_requests", "users", column: "recipient_id"
+  add_foreign_key "follow_requests", "users", column: "sender_id"
   add_foreign_key "reviews", "users", column: "owner_id"
 end
