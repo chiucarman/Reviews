@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :reviews
   devise_for :users
   # Defines the root path route ("/")
