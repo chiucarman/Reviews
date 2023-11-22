@@ -27,4 +27,8 @@ class Review < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :product
   has_many :media
+
+  # Enumerating list of values to be stored in columns
+  enum visibility: { private: "private", followers_only: "followers only", public: "public" }
+  enum would_repurchase: { yes: "yes", maybe: "maybe", no: "no" }
 end

@@ -22,4 +22,7 @@
 class FollowRequest < ApplicationRecord
   belongs_to :recipient, class_name: "User"
   belongs_to :sender, class_name: "User"
+
+  # Enumerating list of values to be stored in columns
+  enum status: { pending: "pending", rejected: "rejected", accepted: "accepted" }
 end
