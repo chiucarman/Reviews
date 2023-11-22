@@ -27,4 +27,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :own_reviews, class_name: "Review", foreign_key: "owner_id"
+  has_many :sent_follow_requests, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
 end
