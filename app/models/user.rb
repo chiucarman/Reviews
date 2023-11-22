@@ -37,4 +37,7 @@ class User < ApplicationRecord
 
   has_many :leaders, through: :accepted_sent_follow_requests, source: :recipient
   has_many :followers, through: :accepted_received_follow_requests, source: :sender
+
+  # Validations
+  validates :username, presence: true, uniqueness: true
 end
