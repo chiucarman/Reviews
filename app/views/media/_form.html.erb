@@ -1,0 +1,27 @@
+<%= form_with(model: media) do |form| %>
+  <% if media.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(media.errors.count, "error") %> prohibited this media from being saved:</h2>
+
+      <ul>
+        <% media.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :file, style: "display: block" %>
+    <%= form.text_field :file %>
+  </div>
+
+  <div>
+    <%= form.label :review_id, style: "display: block" %>
+    <%= form.text_field :review_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
