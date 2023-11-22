@@ -26,4 +26,5 @@
 class Review < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :product
+  has_many :media
 end
