@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_021011) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_26_212148) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_021011) do
     t.bigint "review_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "owner_id", null: false
+    t.index ["owner_id"], name: "index_media_on_owner_id"
     t.index ["review_id"], name: "index_media_on_review_id"
   end
 
@@ -72,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_021011) do
   add_foreign_key "follow_requests", "users", column: "recipient_id"
   add_foreign_key "follow_requests", "users", column: "sender_id"
   add_foreign_key "media", "reviews"
+  add_foreign_key "media", "users", column: "owner_id"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users", column: "owner_id"
 end
