@@ -21,10 +21,32 @@ task({ :sample_data => :environment }) do
       last_name: last_name,
     )
 
-    p u
+    p u.first_name
   end
 
   p "There are now #{User.count} users."
+
+  users = User.all
+
+  users.each do |first_user|
+    users.each do |second_user|
+      if rand < 0.75
+        first_user.sent_follow_requests.create(
+          recipient: second_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
+
+      if rand < 0.75
+        second_user.sent_follow_requests.create(
+          recipient: first_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
+    end
+  end
+  p "There are now #{FollowRequest.count} follow requests."
+
   # user = User.first
   # user.reviews.create(body: "Hi", would_repurchase: "Yes")
 end
