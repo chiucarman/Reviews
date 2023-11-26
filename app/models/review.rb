@@ -28,6 +28,9 @@ class Review < ApplicationRecord
   belongs_to :product
   has_many :media
 
+  # Validations
+  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
+
   # Enumerating list of values to be stored in columns
   enum visibility: { private: "private", followers_only: "followers only", public: "public" }
   enum would_repurchase: { yes: "yes", maybe: "maybe", no: "no" }
