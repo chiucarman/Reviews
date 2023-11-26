@@ -30,6 +30,7 @@ class Review < ApplicationRecord
 
   # Validations
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
+  validates :owner_id, uniqueness: { scope: :product_id, message: "has already reviewed this product" }
 
   # Enumerating list of values to be stored in columns
   enum visibility: { private: "private", followers_only: "followers only", public: "public" }
