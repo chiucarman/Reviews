@@ -4,8 +4,8 @@ task({ :sample_data => :environment }) do
 
     FollowRequest.destroy_all
     Media.destroy_all
-    Product.destroy_all
     Review.destroy_all
+    Product.destroy_all
     User.destroy_all
 
   # Create users
