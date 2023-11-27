@@ -72,6 +72,20 @@ task({ :sample_data => :environment }) do
       p review
     end
   end
+  p "There are now #{Review.count} reviews."
 
   # Create media
+  reviews = Review.all
+
+  reviews.each do |review|
+    rand(3).times do
+      media = Media.create(
+        file: Faker::LoremFlickr.image,
+        owner_id: review.owner_id,
+        review_id: review.id
+      )
+      p media
+    end
+  end
+  p "There are now #{Media.count} medias."
 end
