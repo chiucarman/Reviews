@@ -2,11 +2,13 @@ desc "Fill the database tables with some sample data"
 task({ :sample_data => :environment }) do
   p "Creating sample data"
 
+  if Rails.env.development?
     FollowRequest.destroy_all
     Media.destroy_all
     Review.destroy_all
     Product.destroy_all
     User.destroy_all
+  end
 
   # Create users
   5.times do
