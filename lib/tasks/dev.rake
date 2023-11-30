@@ -75,7 +75,7 @@ task({ :sample_data => :environment }) do
 
   # Create reviews
   users.each do |user|
-    rand(2).times do
+    rand(5).times do
       review = user.own_reviews.create(
         body: Faker::Lorem.paragraph,
         published: [true, false].sample,
@@ -95,9 +95,9 @@ task({ :sample_data => :environment }) do
   reviews = Review.all
 
   reviews.each do |review|
-    rand(3).times do
+    rand(5).times do
       media = Media.create(
-        file: Faker::LoremFlickr.image,
+        file: "https://robohash.org/#{rand(9999)}",
         owner_id: review.owner_id,
         review_id: review.id
       )

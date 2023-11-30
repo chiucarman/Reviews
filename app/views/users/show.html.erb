@@ -1,3 +1,40 @@
 <h1>
   <%= @user.username %>
 </h1>
+
+<h2>Own reviews</h2>
+
+<ul>
+  <% @user.own_reviews.each do |review| %>
+    <li>
+      Owner id: <%= review.owner_id  %>
+    </li>
+
+    <li>
+      Product: <%= review.product  %>
+    </li>
+
+    <li>
+      Rating: <%= review.rating  %>
+    </li>
+
+    <li>
+      Would Repurchase? <%= review.would_repurchase  %>
+    </li>
+  <% end %>
+</ul>
+
+  <h2>
+    Media:
+  </h2>
+
+<!--Media WIP-->
+<ul>
+  <% @user.own_reviews.each do |review| %>
+    <% review.media.each do |media| %>
+      <li>
+        <%= image_tag media.file %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
