@@ -4,37 +4,45 @@
 
 <h2>Own reviews</h2>
 
-<ul>
   <% @user.own_reviews.each do |review| %>
-    <li>
-      Owner id: <%= review.owner_id  %>
-    </li>
+      <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
 
-    <li>
-      Product: <%= review.product  %>
-    </li>
+              <h5 class="card-title">
+                Product: <%= review.product.name %>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <div>
+                  Rating: <%= review.rating %>/10
+                </div>
+                <div>
+                  Would Repurchase? <%= review.would_repurchase.capitalize %>
+                </div>
+              </h6>
+            </div>
 
-    <li>
-      Rating: <%= review.rating  %>
-    </li>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Body: <%= review.body %></li>
+            </ul>
 
-    <li>
-      Would Repurchase? <%= review.would_repurchase  %>
-    </li>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Media:
+                <div>
+                  <% review.media.each do |media| %>
+                    <%= image_tag media.file %>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+
+            <div class="card-body">
+              <a href="#" class="card-link"><%= review.owner.username %></a>
+              <a href="#" class="card-link">Show details</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
   <% end %>
-</ul>
-
-  <h2>
-    Media:
-  </h2>
-
-<!--Media WIP-->
-<ul>
-  <% @user.own_reviews.each do |review| %>
-    <% review.media.each do |media| %>
-      <li>
-        <%= image_tag media.file %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>

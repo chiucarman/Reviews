@@ -32,7 +32,7 @@ task({ :sample_data => :environment }) do
     u = User.create(
       email: "#{first_name}@example.com",
       password: "password",
-      username: "#{first_name}#{last_name}".downcase,
+      username: "#{first_name}",
       first_name: first_name,
       last_name: last_name,
     )
