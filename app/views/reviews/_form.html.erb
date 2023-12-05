@@ -12,8 +12,18 @@
   <% end %>
 
   <div>
+    <label for="owner_id">
+      Owner
+    </label>
+
+    <input type="text" id="owner_id" name="owner_id" value="3">
+  </div>
+
+<hr>
+
+  <div>
     <%= form.label :owner_id, style: "display: block" %>
-    <%= form.text_field :owner_id %>
+    <%= form.text_field :owner_id, value: "3" %>
   </div>
 
   <div>

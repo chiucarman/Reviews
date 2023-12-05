@@ -2,6 +2,8 @@
   <%= @user.username %>
 </h1>
 
+<%= link_to 'Create New', new_path %>
+
 <h2>Own reviews</h2>
 
   <% @user.own_reviews.each do |review| %>
