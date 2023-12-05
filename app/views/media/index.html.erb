@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Media</h1>
+
+<div id="media">
+  <% @media.each do |media| %>
+    <%= render media %>
+    <p>
+      <%= link_to "Show this media", media %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New media", new_media_path %>
