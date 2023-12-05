@@ -33,6 +33,6 @@ class Review < ApplicationRecord
   validates :owner_id, uniqueness: { scope: :product_id, message: "has already reviewed this product" }
 
   # Enumerating list of values to be stored in columns
-  enum visibility: { only_me: "only_me", followers_only: "followers only", everyone: "everyone" }
-  enum would_repurchase: { yes: "yes", maybe: "maybe", no: "no" }
+  enum visibility: { only_me: "Only me", followers_only: "Followers", everyone: "Everyone" }
+  enum would_repurchase: { yes: "Yes", maybe: "Maybe", no: "No" }
 end

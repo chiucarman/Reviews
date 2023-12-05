@@ -1,14 +1,14 @@
 databases:
   - name: reviews
     databaseName: reviews
-    plan: free
+    plan: free # make sure to set this to free or you'll get billed $$$
     user: reviews
 
 services:
   - type: web
     name: reviews
     runtime: ruby
-    plan: free
+    plan: free # make sure to set this to free or you'll get billed $$$
     buildCommand: "./bin/render-build.sh"
     startCommand: "./bin/render-start.sh"
     envVars:
