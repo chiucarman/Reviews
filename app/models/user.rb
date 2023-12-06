@@ -41,4 +41,6 @@ class User < ApplicationRecord
 
   # Validations
   # validates :username, presence: true, uniqueness: true
+
+  include Ransackable
 end
