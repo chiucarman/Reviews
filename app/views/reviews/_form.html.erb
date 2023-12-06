@@ -11,34 +11,36 @@
     </div>
   <% end %>
 
-  <div>
-    <label for="owner_id">
-      Owner
-    </label>
-
-    <input type="text" id="owner_id" name="owner_id" value="3">
-  </div>
-
 <hr>
 
-  <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.text_field :owner_id, value: "3" %>
-  </div>
-
+<!--  <div>
+    <select class="form-select form-select-sm" aria-label="Small select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>-->
+  
   <div>
     <%= form.label :product_id, style: "display: block" %>
     <%= form.number_field :product_id %>
   </div>
-
+  
   <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating %>
+    <%= form.label :rating %>
+    <%= form.select :rating,
+      (1..10).map { |i| [i, i] },
+      { prompt: 'Select one' },
+      { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
   <div>
-    <%= form.label :would_repurchase, style: "display: block" %>
-    <%= form.text_field :would_repurchase %>
+    <%= form.label :would_repurchase %>
+    <%= form.select :would_repurchase, 
+      [['Select one', nil], ['Yes', "yes"], ['No', "no"], ['Maybe', "maybe"]], 
+      { prompt: true }, 
+      { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
   <div>
@@ -47,8 +49,11 @@
   </div>
 
   <div>
-    <%= form.label :visibility, style: "display: block" %>
-    <%= form.text_field :visibility %>
+    <%= form.label :visibility %>
+    <%= form.select :visibility, 
+      [['Select one', nil], ['Only me', "only_me"], ['Followers', "followers_only"], ['Everyone', "everyone"]], 
+      { prompt: true }, 
+      { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
   <div>
