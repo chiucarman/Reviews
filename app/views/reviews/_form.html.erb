@@ -26,12 +26,11 @@
     <%= form.label :product_id, style: "display: block" %>
     <%= form.number_field :product_id %>
   </div>
-  
+
   <div>
     <%= form.label :rating %>
     <%= form.select :rating,
-      (1..10).map { |i| [i, i] },
-      { prompt: 'Select one' },
+      [[ 'Select one', nil ]] + (1..10).map { |i| [i, i] },
       { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
@@ -39,7 +38,6 @@
     <%= form.label :would_repurchase %>
     <%= form.select :would_repurchase, 
       [['Select one', nil], ['Yes', "yes"], ['No', "no"], ['Maybe', "maybe"]], 
-      { prompt: true }, 
       { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
@@ -51,8 +49,7 @@
   <div>
     <%= form.label :visibility %>
     <%= form.select :visibility, 
-      [['Select one', nil], ['Only me', "only_me"], ['Followers', "followers_only"], ['Everyone', "everyone"]], 
-      { prompt: true }, 
+      [['Select one', nil], ['Only me', "only_me"], ['Followers', "followers_only"], ['Everyone', "everyone"]],
       { class: 'form-select', 'aria-label' => 'Default select example' } %>
   </div>
 
