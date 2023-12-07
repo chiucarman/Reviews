@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :ensure_user_is_authorized, only: [:show]
 
   # GET /reviews or /reviews.json
   def index
@@ -68,5 +69,11 @@ class ReviewsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def review_params
       params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published)
+    end
+
+    def ensure_user_is_authorized
+      if !ReviewPolicy.new(current_user, @review).show?
+        redirect_back fallback_location: rool_url
+      end
     end
 end
