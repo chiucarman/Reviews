@@ -11,4 +11,6 @@ class Product < ApplicationRecord
   has_many :reviews
   has_many :reviewers, through: :reviews, source: :owner
   has_many :media, through: :reviews, source: :media
+
+  include Ransackable
 end

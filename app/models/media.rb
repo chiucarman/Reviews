@@ -22,4 +22,6 @@
 class Media < ApplicationRecord
   belongs_to :review
   belongs_to :owner, class_name: "User"
+
+  include Ransackable
 end

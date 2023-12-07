@@ -35,4 +35,6 @@ class Review < ApplicationRecord
   # Enumerating list of values to be stored in columns
   enum visibility: { only_me: "Only me", followers_only: "Followers", everyone: "Everyone" }
   enum would_repurchase: { yes: "Yes", maybe: "Maybe", no: "No" }
+
+  include Ransackable
 end
