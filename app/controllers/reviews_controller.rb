@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
   before_action :ensure_user_is_authorized, only: [:show]
 
   # GET /reviews or /reviews.json
@@ -74,6 +75,13 @@ class ReviewsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def review_params
       params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published)
+    end
+
+  # Authorization
+    def ensure_current_user_is_owner
+      if current_user != @review.owner
+        redirect_back fallback_location: root_url, alert: "You're not authorized for that."
+      end
     end
 
 # Not needed when 'include Pundit' is in the app controller
