@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :media
-  resources :follow_requests
+  resources :follow_requests, except: [:index, :show, :new, :edit]
   resources :products
   resources :reviews
 
