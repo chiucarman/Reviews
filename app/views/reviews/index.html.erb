@@ -2,7 +2,7 @@
 
 <div id="reviews">
   <% @reviews.each do |review| %>
-    <%= render review %>
+    <%= render review, user: current_user %>
   <% end %>
 </div>
 

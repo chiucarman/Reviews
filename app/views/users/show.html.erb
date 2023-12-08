@@ -7,5 +7,5 @@
 <h2>Own reviews</h2>
 
 <% @user.own_reviews.each do |review| %>
-  <%=   render review %>
+  <%=   render review, user: current_user %>
 <% end %>

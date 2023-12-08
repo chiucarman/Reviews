@@ -13,6 +13,12 @@
           <div>
             Would Repurchase? <%= review.would_repurchase %>
           </div>
+          <div>
+            Visibility: <%= review.visibility %>
+          </div>
+          <div>
+            Follower? <%= review.owner.followers.include?(user) %>
+          </div>
         </h6>
       </div>
 
