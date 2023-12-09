@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @review %>
+<%= render @review, user: current_user %>
 
 <div>
   <%= link_to "Edit this review", edit_review_path(@review) %> |

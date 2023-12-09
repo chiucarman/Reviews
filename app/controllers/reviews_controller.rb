@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :ensure_user_is_authorized, only: [:show]
 
   # GET /reviews or /reviews.json
   def index
@@ -8,6 +9,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1 or /reviews/1.json
   def show
+    authorize @review
   end
 
   # GET /reviews/new
@@ -69,4 +71,18 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published)
     end
+
+# Not needed when 'include Pundit' is in the app controller
+    def ensure_user_is_authorized
+      if !ReviewPolicy.new(current_user, @review).show?
+        raise Pundit::NotAuthorizedError, "not allowed"
+      end
+    end
+
+    # def ensure_user_is_authorized
+    #   authorize @review
+    # rescue Pundit::NotAuthorizedError
+    #   flash[:alert] = "You are not authorized to view this review."
+    #   redirect_to root_url
+    # end
 end
