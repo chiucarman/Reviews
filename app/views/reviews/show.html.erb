@@ -1,8 +1,10 @@
+<%= link_to "Back to reviews", reviews_path %>
+
 <%= render @review, user: current_user %>
 
 <div>
-  <%= link_to "Edit this review", edit_review_path(@review) %> |
-  <%= link_to "Back to reviews", reviews_path %>
-
-  <%= button_to "Destroy this review", @review, method: :delete %>
+  <% if current_user == @review.owner %>
+    <%= link_to "Edit this review", edit_review_path(@review) %>
+    <%= button_to "Destroy this review", @review, method: :delete %>
+  <% end %>
 </div>
