@@ -6,9 +6,7 @@ class ReviewPolicy < ApplicationPolicy
     @review = review
   end
 
-  # Our policy is that a photo should only be seen by the owner or followers
-  #   of the owner, unless the owner is not private in which case anyone can
-  #   see it
+  # Our policy is that a review should only be seen by the owner or followers of the owner, unless the review is public in which case anyone can see it
 
   def show?
     # show if the user is the owner
