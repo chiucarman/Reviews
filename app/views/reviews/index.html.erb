@@ -2,8 +2,8 @@
 
 <div id="reviews">
   <% @reviews.each do |review| %>
-  <!--Only show if user is not review' owner, or if the review is not set to only me and user is following the review's owner-->
-    <% if (review.owner != current_user) && (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) %>
+  <!--Only show if review is published, user is not review' owner, or if the review is not set to only me and user is following the review's owner-->
+    <% if (review.published?) && (review.owner != current_user) && (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) %>
       <%= render review, user: current_user %>
     <% end %>
   <% end %>

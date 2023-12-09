@@ -7,5 +7,11 @@
 <h2>Own reviews</h2>
 
 <% @user.own_reviews.each do |review| %>
-  <%=   render review, user: current_user %>
+<!--if current user, then show all their reviews-->
+  <% if (@user == current_user) && review.published? %>
+    <%=   render review, user: current_user %>
+<!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
+  <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') && review.published? %>
+      <%= render review, user: current_user %>
+  <% end %>
 <% end %>
