@@ -1,7 +1,7 @@
 <%= render @product %>
 
 <div>
-  <%= link_to 'Create New Review', new_review_path(product_id: @product.id) %> |
+  <%= link_to 'Create New Review', new_review_path(product_name: @product.name, product_id: @product.id) %> |
   <%= link_to "Edit this product", edit_product_path(@product) %> |
   <%= link_to "Back to products", products_path %>
   <%= button_to "Destroy this product", @product, method: :delete %>

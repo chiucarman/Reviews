@@ -24,6 +24,8 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class Review < ApplicationRecord
+  attr_accessor :product_name
+
   belongs_to :owner, class_name: "User"
   belongs_to :product
   has_many :media, class_name: "Media", dependent: :destroy

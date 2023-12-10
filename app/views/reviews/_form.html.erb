@@ -12,11 +12,16 @@
   <% end %>
 
 <hr>
-  
   <div>
-    <%= form.label :product_id, style: "display: block" %>
+    <%= form.label :product_id, 'Product ID', style: "display: block" %>
     <%= form.number_field :product_id %>
   </div>
+
+  <%# if @product_id != nil %>
+    <div>
+      <%= form.label :product_name, style: "display: block" %>
+      <%= form.text_field :product_name %>
+    </div>
 
   <div>
     <%= form.label :rating %>
