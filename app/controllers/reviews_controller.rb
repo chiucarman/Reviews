@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
   before_action :ensure_user_is_authorized, only: [:show]
 
   # GET /reviews or /reviews.json
@@ -53,11 +54,15 @@ class ReviewsController < ApplicationController
 
   # DELETE /reviews/1 or /reviews/1.json
   def destroy
-    @review.destroy
+    if current_user == @review.owner
+      @review.destroy
 
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back(fallback_location: root_url, notice: "Nice try, but that is not your review.")
     end
   end
 
@@ -70,6 +75,13 @@ class ReviewsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def review_params
       params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published)
+    end
+
+  # Authorization
+    def ensure_current_user_is_owner
+      if current_user != @review.owner
+        redirect_back fallback_location: root_url, alert: "You're not authorized for that."
+      end
     end
 
 # Not needed when 'include Pundit' is in the app controller

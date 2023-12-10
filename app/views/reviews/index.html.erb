@@ -2,8 +2,9 @@
 
 <div id="reviews">
   <% @reviews.each do |review| %>
-    <%= render review, user: current_user %>
+  <!--Only show if review is published, user is not review' owner, or if the review is not set to only me and user is following the review's owner-->
+    <% if (review.published?) && (review.owner != current_user) && (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) %>
+      <%= render review, user: current_user %>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New review", new_review_path %>

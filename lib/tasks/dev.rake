@@ -26,7 +26,7 @@ task({ :sample_data => :environment }) do
   end
 
   # Create users
-  5.times do
+  10.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     u = User.create(
@@ -75,7 +75,7 @@ task({ :sample_data => :environment }) do
 
   # Create reviews
   users.each do |user|
-    rand(5).times do
+    rand(10).times do
       review = user.own_reviews.create(
         body: Faker::Lorem.paragraph,
         published: [true, false].sample,
@@ -86,7 +86,7 @@ task({ :sample_data => :environment }) do
         product_id: Product.all.sample.id
       )
 
-      p review
+      # p review
     end
   end
   p "There are now #{Review.count} reviews."
@@ -101,7 +101,7 @@ task({ :sample_data => :environment }) do
         owner_id: review.owner_id,
         review_id: review.id
       )
-      p media
+      # p media
     end
   end
   p "There are now #{Media.count} medias."

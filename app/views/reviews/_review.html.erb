@@ -19,6 +19,9 @@
           <div>
             Follower? <%= review.owner.followers.include?(user) %>
           </div>
+          <div>
+            Published? <%= review.published? %>
+          </div>
         </h6>
       </div>
 
