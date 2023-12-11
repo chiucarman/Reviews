@@ -1,53 +1,33 @@
-<div class="row mb-4">
-  <div class="col-md-6 offset-md-3">
-    <div class="card">
-      <div class="card-body">
+<div class="card mb-3" style="max-width: 25rem;">
+  <h3 class="card-header"><%= review.product.name %></h3>
+  <div class="card-body">
+    <h5 class="card-title">Rating: <%= review.rating %>/10</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Would Repurchase? <%= review.would_repurchase %></h6>
 
-        <h5 class="card-title">
-          Product: <%= review.product.name %>
-        </h5>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <div>
-            Rating: <%= review.rating %>/10
-          </div>
-          <div>
-            Would Repurchase? <%= review.would_repurchase %>
-          </div>
-          <div>
-            Visibility: <%= review.visibility %>
-          </div>
-          <div>
-            Follower? <%= review.owner.followers.include?(user) %>
-          </div>
-          <div>
-            Published? <%= review.published? %>
-          </div>
-        </h6>
+    <!--Debugging Tools-->
+    <!--    <h6 class="card-subtitle mb-2 text-muted">Visibility: <%#= review.visibility %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Follower? <%#= review.owner.followers.include?(user) %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Published? <%#= review.published? %></h6>-->
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Notes: <%= review.body %></li>
+    <li class="list-group-item">Media:
+      <div>
+        <!-- Cloudinary Media -->
+        <img src="<%= review.image.url %>" class="img-responsive" width="350" alt="Media Image">
+        <!-- Sample data media -->
+        <%# review.media.each do |media| %>
+          <%#= image_tag media.file %>
+        <%# end %>
       </div>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Body: <%= review.body %></li>
-      </ul>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Media:
-          <div>
-          <!--Cloudinary Media-->
-            <img src="<%= review.image.url %>" class="img-responsive">
-
-          <!--Sample data media-->
-            <%# review.media.each do |media| %>
-              <%#= image_tag media.file %>
-            <%# end %>
-          </div>
-        </li>
-      </ul>
-
-      <div class="card-body">
-        <%= link_to "#{review.owner.username}", user_path(username: review.owner.username) %>
-        <%= link_to "Show this review", review %>
-      </div>
-      
-    </div>
+    </li>
+  </ul>
+  <div class="card-body">
+    <%= link_to "#{review.owner.username}", user_path(username: review.owner.username), class: "card-link" %>
+    <%= link_to "Show this review", review, class: "card-link" %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= Time.now.strftime("%d %B, %Y") %>
   </div>
 </div>

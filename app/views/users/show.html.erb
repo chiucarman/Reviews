@@ -1,22 +1,33 @@
 <h1>
-  <%= @user.username %>
+  <%= @user.username %>'s reviews
 </h1>
 
-<%= link_to 'Create New', new_review_path %>
+<!--Future feature with dropdown searchbar-->
+<%#= link_to 'Create New', new_review_path %>
 
-<h2>Own reviews</h2>
+<div class="container mt-4">
+  <div class="row row-cols-1 row-cols-md-3">
 
-<% @user.own_reviews.each do |review| %>
-<!--if current user, then show all their reviews-->
-  <% if (@user == current_user) %>
-    <!--make sure it's also published-->
-    <% if review.published? %>
-      <%= render review, user: current_user %>
+    <% @user.own_reviews.each do |review| %>
+    <!--if current user, then show all their reviews-->
+      <% if (@user == current_user) %>
+        <!--make sure it's also published-->
+        <% if review.published? %>
+          <div class="col mb-4">
+            <%= render review, user: current_user %>
+          </div>
+        <% end %>
+
+        <!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
+      <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') %>
+        <% if review.published? %>
+          <div class="col mb-4">
+            <%= render review, user: current_user %>
+          </div>
+        <% end %>
+      <% end %>
+
     <% end %>
-<!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
-  <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') %>
-    <% if review.published? %>
-      <%= render review, user: current_user %>
-    <% end %>
-  <% end %>
-<% end %>
+
+  </div>
+</div>
