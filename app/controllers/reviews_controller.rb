@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
+    # @review.image = params
 
     @review.owner_id = current_user.id
 
@@ -76,7 +77,7 @@ class ReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published)
+      params.require(:review).permit(:owner_id, :product_id, :rating, :would_repurchase, :body, :visibility, :published, :image)
     end
 
   # Authorization

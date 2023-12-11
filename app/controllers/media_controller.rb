@@ -23,7 +23,7 @@ class MediaController < ApplicationController
   def create
     @media = Media.new(media_params)
 
-    @media.file params.fetch(:media_file)
+    # @media.file params.fetch(:media_file)
 
     respond_to do |format|
       if @media.save
@@ -38,7 +38,7 @@ class MediaController < ApplicationController
 
   # PATCH/PUT /media/1 or /media/1.json
   def update
-    @media.file params.fetch(:media_file)
+    # @media.file params.fetch(:media_file)
     
     respond_to do |format|
       if @media.update(media_params)
