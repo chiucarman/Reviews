@@ -12,7 +12,8 @@ Reviews is a web application that allows users to create and manage their produc
 - Bookmark reviews
 - Bookmark products
 - Comments and likes under reviews
-- Search bar for their own reviews and filters
+- Search bar for own reviews and filters
+- Can see if friends have reviewed a product when searching
 
 ### Dependencies
 Reviews is built from the Ruby on Rails framework and uses Ruby gems. Cloudinary is also utilized for media storage.
