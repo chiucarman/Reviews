@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review.product_id = params[:product_id] if params[:product_id]
     @review.product_name = params[:product_name] if params[:product_name]
+    @review.published = true
   end
 
   # GET /reviews/1/edit
@@ -30,6 +31,7 @@ class ReviewsController < ApplicationController
     # @review.image = params
 
     @review.owner_id = current_user.id
+    @review.published = true
 
     respond_to do |format|
       if @review.save
