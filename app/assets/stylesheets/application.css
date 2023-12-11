@@ -14,7 +14,7 @@
  *= require_self
  */
 
- .container {
+ .padding {
   padding-top: 20px;
   /* padding-left: 20px; */
 }
