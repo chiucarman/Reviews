@@ -11,52 +11,58 @@
     </div>
   <% end %>
 
-<hr>
-  <div>
-    <%= form.label :product_id, 'Product ID', style: "display: block" %>
-    <%= form.number_field :product_id %>
-  </div>
+  <hr>
 
-  <%# if @product_id != nil %>
     <div>
-      <%= form.label :product_name, style: "display: block" %>
-      <%= form.text_field :product_name %>
+      <%= form.label :product_id, 'Product ID', style: "display: block" %>
+      <%= form.number_field :product_id %>
     </div>
 
-  <div>
-    <%= form.label :rating %>
-    <%= form.select :rating,
-      [[ 'Select one', nil ]] + (1..10).map { |i| [i, i] },
-      { class: 'form-select', 'aria-label' => 'Default select example' } %>
-  </div>
+    <%# if @product_id != nil %>
+      <div>
+        <%= form.label :product_name, style: "display: block" %>
+        <%= form.text_field :product_name %>
+      </div>
 
-  <div>
-    <%= form.label :would_repurchase %>
-    <%= form.select :would_repurchase, 
-      [['Select one', nil], ['Yes', "yes"], ['No', "no"], ['Maybe', "maybe"]], 
-      { class: 'form-select', 'aria-label' => 'Default select example' } %>
-  </div>
+    <div>
+      <%= form.label :rating %>
+      <%= form.select :rating,
+        [[ 'Select one', nil ]] + (1..10).map { |i| [i, i] },
+        { class: 'form-select', 'aria-label' => 'Default select example' } %>
+    </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
-  </div>
+    <div>
+      <%= form.label :would_repurchase %>
+      <%= form.select :would_repurchase, 
+        [['Select one', nil], ['Yes', "yes"], ['No', "no"], ['Maybe', "maybe"]], 
+        { class: 'form-select', 'aria-label' => 'Default select example' } %>
+    </div>
 
-  <div>
-    <%= form.label :visibility %>
-    <%= form.select :visibility, 
-      [['Select one', nil], ['Only me', "only_me"], ['Followers', "followers_only"], ['Everyone', "everyone"]],
-      { class: 'form-select', 'aria-label' => 'Default select example' } %>
-  </div>
+    <div>
+      <%= form.label :body, style: "display: block" %>
+      <%= form.text_area :body %>
+    </div>
 
-  <div>
-    <%= form.label :published, style: "display: block" %>
-    <%= form.check_box :published %>
-  </div>
+    <div>
+      <%= form.label :visibility %>
+      <%= form.select :visibility, 
+        [['Select one', nil], ['Only me', "only_me"], ['Followers', "followers_only"], ['Everyone', "everyone"]],
+        { class: 'form-select', 'aria-label' => 'Default select example' } %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.label :published, style: "display: block" %>
+      <%= form.check_box :published %>
+    </div>
+
+    <div>
+<!--      <input type="file" id="me_file" name="media_file" class="form-control">-->
+      <%= form.file_field :image, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
 <% end %>
 
 <!--  <div>

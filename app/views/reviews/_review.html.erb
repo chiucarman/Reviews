@@ -32,9 +32,13 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Media:
           <div>
-            <% review.media.each do |media| %>
-              <%= image_tag media.file %>
-            <% end %>
+          <!--Cloudinary Media-->
+            <img src="<%= review.image.url %>" class="img-responsive">
+
+          <!--Sample data media-->
+            <%# review.media.each do |media| %>
+              <%#= image_tag media.file %>
+            <%# end %>
           </div>
         </li>
       </ul>

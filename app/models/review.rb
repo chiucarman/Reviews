@@ -4,6 +4,7 @@
 #
 #  id               :bigint           not null, primary key
 #  body             :string
+#  image            :string
 #  published        :boolean
 #  rating           :integer
 #  visibility       :string
@@ -24,6 +25,7 @@
 #  fk_rails_...  (product_id => products.id)
 #
 class Review < ApplicationRecord
+  mount_uploader :image, ImageUploader
   attr_accessor :product_name
 
   belongs_to :owner, class_name: "User"
