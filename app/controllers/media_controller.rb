@@ -23,6 +23,8 @@ class MediaController < ApplicationController
   def create
     @media = Media.new(media_params)
 
+    @media.file params.fetch(:media_file)
+
     respond_to do |format|
       if @media.save
         format.html { redirect_to media_url(@media), notice: "Media was successfully created." }
@@ -36,6 +38,8 @@ class MediaController < ApplicationController
 
   # PATCH/PUT /media/1 or /media/1.json
   def update
+    @media.file params.fetch(:media_file)
+    
     respond_to do |format|
       if @media.update(media_params)
         format.html { redirect_to media_url(@media), notice: "Media was successfully updated." }
