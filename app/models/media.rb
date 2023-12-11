@@ -20,8 +20,6 @@
 #  fk_rails_...  (review_id => reviews.id)
 #
 class Media < ApplicationRecord
-  mount_uploader :file, FileUploader
-
   belongs_to :review
   belongs_to :owner, class_name: "User"
 
