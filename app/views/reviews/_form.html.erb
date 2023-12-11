@@ -12,20 +12,16 @@
   <% end %>
 
 <hr>
-
-<!--  <div>
-    <select class="form-select form-select-sm" aria-label="Small select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>-->
-  
   <div>
-    <%= form.label :product_id, style: "display: block" %>
+    <%= form.label :product_id, 'Product ID', style: "display: block" %>
     <%= form.number_field :product_id %>
   </div>
+
+  <%# if @product_id != nil %>
+    <div>
+      <%= form.label :product_name, style: "display: block" %>
+      <%= form.text_field :product_name %>
+    </div>
 
   <div>
     <%= form.label :rating %>
@@ -62,3 +58,12 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<!--  <div>
+    <select class="form-select form-select-sm" aria-label="Small select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>-->

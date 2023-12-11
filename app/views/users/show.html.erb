@@ -2,7 +2,7 @@
   <%= @user.username %>
 </h1>
 
-<%= link_to 'Create New', new_path %>
+<%= link_to 'Create New', new_review_path %>
 
 <h2>Own reviews</h2>
 
@@ -14,7 +14,9 @@
       <%= render review, user: current_user %>
     <% end %>
 <!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
-  <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') && review.published? %>
-    <%= render review, user: current_user %>
+  <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') %>
+    <% if review.published? %>
+      <%= render review, user: current_user %>
+    <% end %>
   <% end %>
 <% end %>
