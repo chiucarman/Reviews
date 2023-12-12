@@ -23,6 +23,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @review.product_name = params[:product_name] if params[:product_name]
   end
 
   # POST /reviews or /reviews.json

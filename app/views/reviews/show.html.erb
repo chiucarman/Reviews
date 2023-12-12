@@ -4,7 +4,7 @@
 
 <div>
   <% if current_user == @review.owner %>
-    <%= link_to "Edit this review", edit_review_path(@review) %>
+    <%= link_to "Edit this review", edit_review_path(@review, product_name: @review.product.name) %>
     <%= button_to "Destroy this review", @review, method: :delete %>
   <% end %>
 </div>
