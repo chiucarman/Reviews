@@ -2,9 +2,6 @@
   <%= @user.username %>'s reviews
 </h1>
 
-<!--Future feature with dropdown searchbar-->
-<%#= link_to 'Create New', new_review_path %>
-
 <div class="container mt-4">
   <div class="row row-cols-1 row-cols-md-3">
 
@@ -18,7 +15,7 @@
           </div>
         <% end %>
 
-        <!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
+      <!--if not current user, only show reviews that are visible to everyone or user is following review's owner and it's not set to only_me-->
       <% elsif (review.visibility != 'only_me' && review.owner.followers.include?(current_user)) || (review.visibility == 'everyone') %>
         <% if review.published? %>
           <div class="col mb-4">
