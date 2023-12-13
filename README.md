@@ -4,11 +4,12 @@ ReBuyGuide is a web application that allows users to create and manage their pro
 ## Features
 - Create a review
 - Reviews have visibility options (private, followers only, public)
-- Users can follow other users
 - Can see reviews from users you follow
 - Upload an image for each review
+- View other user's profiles
 
 ### Future Features
+- Users can follow other users
 - Favorites (from own reviews)
 - Bookmark reviews and products
 - Comments and likes under reviews
