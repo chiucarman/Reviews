@@ -1,5 +1,5 @@
 # Overview
-Reviews is a web application that allows users to create and manage their product reviews to inform their future purchasing decisions. It provides a user-friendly interface for users to track products they would or would not purchase again, as well as the ability to control visibility for each post to protect their privacy. In addition, users can follow their friends to see what products they are reviewing.
+ReBuyGuide is a web application that allows users to create and manage their product reviews to inform their future purchasing decisions. It provides a user-friendly interface for users to track products they would or would not purchase again, as well as the ability to control visibility for each post to protect their privacy. In addition, users can follow their friends to see what products they are reviewing.
 
 ## Features
 - Create a review
