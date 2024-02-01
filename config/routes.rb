@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   get "/new" => "reviews#new", as: :new
   get "search", to: "search#index"
-  get "/:username" => "users#show", as: :user
+  get ":username/followers" => "users#followers", as: :followers
+  get ":username/following" => "users#leaders", as: :leaders
+
+  get ":username" => "users#show", as: :user
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
