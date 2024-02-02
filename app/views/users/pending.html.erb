@@ -1,0 +1,7 @@
+<% @user.received_follow_requests.each do |follow_request| %>
+  <% if (follow_request.status == "pending") %>
+    <ul class="list-group">
+      <li class="list-group-item"><%= follow_request.sender.username %>, <%= follow_request.status %></li>
+    </ul>
+  <% end %>
+<% end %>

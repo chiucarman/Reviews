@@ -12,6 +12,9 @@
   <li class="nav-item">
     <%= link_to "Following", leaders_path(@user.username), class: "nav-link" %>
   </li>
+    <li class="nav-item">
+    <%= link_to "Pending", pending_path(@user.username), class: "nav-link" %>
+  </li>
 </ul>
 
 <div class="container mt-4">

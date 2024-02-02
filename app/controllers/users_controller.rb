@@ -11,4 +11,8 @@ class UsersController < ApplicationController
   def leaders
     @user = User.find_by!(username: params.fetch(:username))
   end
+
+  def pending
+    @user = User.find_by!(username: params.fetch(:username))
+  end
 end

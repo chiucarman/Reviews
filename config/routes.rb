@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "search", to: "search#index"
   get ":username/followers" => "users#followers", as: :followers
   get ":username/following" => "users#leaders", as: :leaders
+  get ":username/pending" => "users#pending", as: :pending
 
   get ":username" => "users#show", as: :user
   
