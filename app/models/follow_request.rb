@@ -25,4 +25,15 @@ class FollowRequest < ApplicationRecord
 
   # Enumerating list of values to be stored in columns
   enum status: { pending: "pending", rejected: "rejected", accepted: "accepted" }
+
+  # validations
+  validates :recipient_id, uniqueness: { scope: :sender_id, message: "already requested" }
+
+  validate :users_cant_follow_themselves
+
+  def users_cant_follow_themselves
+    if sender_id == recipient_id
+      errors.add(:sender_id, "can't follow themselves")
+    end
+  end
 end
