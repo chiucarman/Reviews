@@ -35,9 +35,11 @@ class User < ApplicationRecord
 
   has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
   has_many :accepted_received_follow_requests, -> { accepted }, foreign_key: :recipient_id, class_name: "FollowRequest"
+  has_many :pending_received_follow_requests, -> { pending }, foreign_key: :recipient_id, class_name: "FollowRequest"
 
   has_many :leaders, through: :accepted_sent_follow_requests, source: :recipient
   has_many :followers, through: :accepted_received_follow_requests, source: :sender
+  has_many :pending, through: :pending_received_follow_requests, source: :sender
 
   # Validations
   validates :username, presence: true, uniqueness: true
