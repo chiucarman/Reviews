@@ -1,3 +1,4 @@
+<!--User profile tabbed interface-->
 <h1>
   <%= user.username %>
 </h1>
@@ -25,12 +26,48 @@
     <%= link_to "Posts", user_path(user.username), class: "nav-link active" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Followers", followers_path(user.username), class: "nav-link" %>
+    <%= link_to "#",
+      data: { 
+        bs_toggle: "modal", 
+        bs_target: "##{dom_id(user)}_followers" 
+      }, 
+        class: "nav-link" do %>
+        
+      <span class="font-weight-bold">
+        <%= user.followers.size %>
+      </span>
+
+      Followers
+
+    <% end %>
   </li>
   <li class="nav-item">
-    <%= link_to "Following", leaders_path(user.username), class: "nav-link" %>
+    <%= link_to "#",
+      data: {
+        bs_toggle: "modal",
+        bs_target: "##{dom_id(user)}_leaders"
+      },
+        class: "nav-link" do %>
+
+      <span class="font-weight-bold">
+        <%= user.leaders.size %>
+      </span>
+
+      Following
+
+     <% end %>
   </li>
-    <li class="nav-item">
+  <li class="nav-item">
+    <%= link_to "#",
+      data: {
+        bs_toggle: "modal",
+        bs_target: "##{dom_id(user)}_pending"
+      },
+        class: "nav-link" do %>
+
+    <span class="font-weight-bold">
+      <%= user.pending.size %>
+    </span>
     <%= link_to "Pending", pending_path(user.username), class: "nav-link" %>
   </li>
 </ul>
@@ -43,3 +80,11 @@
     description: "followers",
     target: "#{dom_id(user)}_followers"
 %>
+
+<%= 
+  render "users/connected_users_modal",
+    user: user,
+    connected_users: user.leaders,
+    description: "following",
+    target: "#{dom_id(user)}_leaders"
+ %>
