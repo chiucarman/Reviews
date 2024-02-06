@@ -34,3 +34,12 @@
     <%= link_to "Pending", pending_path(user.username), class: "nav-link" %>
   </li>
 </ul>
+
+<!-- modals -->
+<%=
+  render "users/connected_users_modal",
+    user: user,
+    connected_users: user.followers,
+    description: "followers",
+    target: "#{dom_id(user)}_followers"
+%>
