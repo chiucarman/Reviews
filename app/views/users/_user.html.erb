@@ -1,0 +1,36 @@
+<h1>
+  <%= user.username %>
+</h1>
+
+    <div class="row mb-4">
+      <div class="col">
+        <%=
+          link_to "#",
+            data: { 
+              bs_toggle: "modal", 
+              bs_target: "##{dom_id(user)}_followers"
+            } do %>
+
+          <span class="font-weight-bold">
+            <%= user.followers.size %>
+          </span>
+          
+          followers
+
+        <% end %>
+      </div>
+
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <%= link_to "Posts", user_path(user.username), class: "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Followers", followers_path(user.username), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Following", leaders_path(user.username), class: "nav-link" %>
+  </li>
+    <li class="nav-item">
+    <%= link_to "Pending", pending_path(user.username), class: "nav-link" %>
+  </li>
+</ul>
