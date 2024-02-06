@@ -3,24 +3,6 @@
   <%= user.username %>
 </h1>
 
-    <div class="row mb-4">
-      <div class="col">
-        <%=
-          link_to "#",
-            data: { 
-              bs_toggle: "modal", 
-              bs_target: "##{dom_id(user)}_followers"
-            } do %>
-
-          <span class="font-weight-bold">
-            <%= user.followers.size %>
-          </span>
-          
-          followers
-
-        <% end %>
-      </div>
-
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <%= link_to "Posts", user_path(user.username), class: "nav-link active" %>
@@ -68,7 +50,10 @@
     <span class="font-weight-bold">
       <%= user.pending.size %>
     </span>
-    <%= link_to "Pending", pending_path(user.username), class: "nav-link" %>
+
+    Pending
+
+    <% end %>
   </li>
 </ul>
 
@@ -87,4 +72,12 @@
     connected_users: user.leaders,
     description: "following",
     target: "#{dom_id(user)}_leaders"
- %>
+%>
+
+<%= 
+  render "users/connected_users_modal",
+    user: user,
+    connected_users: user.pending,
+    description: "pending",
+    target: "#{dom_id(user)}_pending"
+%>
