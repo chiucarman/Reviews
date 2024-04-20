@@ -57,6 +57,9 @@
   </li>
 </ul>
 
+<!--Follow button-->
+<%= render "follow_requests/follow_unfollow", sender: current_user, recipient: @user %>
+
 <!-- modals -->
 <%=
   render "users/connected_users_modal",
