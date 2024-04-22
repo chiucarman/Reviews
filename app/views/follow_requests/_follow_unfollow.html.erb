@@ -1,3 +1,4 @@
+<!--Prevents users from sending a follow request to themselves-->
 <% unless sender == recipient %>
   <% follow_request = current_user.sent_follow_requests.find_by(recipient: recipient) %>
 
