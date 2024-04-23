@@ -1,64 +1,68 @@
 <!--User profile tabbed interface-->
-<h1>
-  <%= user.username %>
-</h1>
+<div class="media-body>
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="mt-0 mb-3 display-4">
+      <%= user.username %>
+    </h1>
+  </div>
 
-<ul class="nav nav-pills nav-fill">
-  <li class="nav-item">
-    <%= link_to "Posts", user_path(user.username), class: "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "#",
-      data: { 
-        bs_toggle: "modal", 
-        bs_target: "##{dom_id(user)}_followers" 
-      }, 
-        class: "nav-link" do %>
-        
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <%= link_to "Posts", user_path(user.username), class: "nav-link active" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#",
+        data: { 
+          bs_toggle: "modal", 
+          bs_target: "##{dom_id(user)}_followers" 
+        }, 
+          class: "nav-link" do %>
+          
+        <span class="font-weight-bold">
+          <%= user.followers.size %>
+        </span>
+
+        Followers
+
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#",
+        data: {
+          bs_toggle: "modal",
+          bs_target: "##{dom_id(user)}_leaders"
+        },
+          class: "nav-link" do %>
+
+        <span class="font-weight-bold">
+          <%= user.leaders.size %>
+        </span>
+
+        Following
+
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#",
+        data: {
+          bs_toggle: "modal",
+          bs_target: "##{dom_id(user)}_pending"
+        },
+          class: "nav-link" do %>
+
       <span class="font-weight-bold">
-        <%= user.followers.size %>
+        <%= user.pending.size %>
       </span>
 
-      Followers
+      Pending
 
-    <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "#",
-      data: {
-        bs_toggle: "modal",
-        bs_target: "##{dom_id(user)}_leaders"
-      },
-        class: "nav-link" do %>
+      <% end %>
+    </li>
+  </ul>
 
-      <span class="font-weight-bold">
-        <%= user.leaders.size %>
-      </span>
-
-      Following
-
-     <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "#",
-      data: {
-        bs_toggle: "modal",
-        bs_target: "##{dom_id(user)}_pending"
-      },
-        class: "nav-link" do %>
-
-    <span class="font-weight-bold">
-      <%= user.pending.size %>
-    </span>
-
-    Pending
-
-    <% end %>
-  </li>
-</ul>
-
-<!--Follow button-->
-<%= render "follow_requests/follow_unfollow", sender: current_user, recipient: @user %>
+  <!--Follow button-->
+  <%= render "follow_requests/follow_unfollow", sender: current_user, recipient: @user %>
+</div>
 
 <!-- modals -->
 <%=
